@@ -25,7 +25,13 @@ function gerarListaCompras(produtos) {
             } else {
                 comprar = Number(comprar.toFixed(2));
             }
-
+console.log({
+    nome: produto["Nome"],
+    estoque: estoque,
+    minimo: minimo,
+    medida: medida,
+    comprar: minimo - estoque
+});
             lista.push({
 
                 nome: nome,
