@@ -86,9 +86,9 @@ function calcularIndicadores() {
 
     let faturamento = 0;
 
-    vendas.forEach(item => {
+  vendas.forEach(item => {
 
-        faturamento += Number(item["Valor Total"] || 0);
+    faturamento += Number(item["Valor. Tot. Item"] || 0);
 
     });
 
