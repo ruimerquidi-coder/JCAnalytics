@@ -58,6 +58,9 @@ async function gerarDashboard() {
         const criticos = calcularProdutosCriticos(produtos);
 
 mostrarProdutosCriticos(criticos);
+        const compras = gerarListaCompras(produtos);
+
+mostrarListaCompras(compras);
 
     } catch (erro) {
 
