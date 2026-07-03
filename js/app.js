@@ -1,5 +1,89 @@
-function gerarDashboard(){
+let produtos = [];
+let vendas = [];
 
-alert("Próxima etapa: leitura das planilhas.");
+async function lerArquivo(file) {
+    return new Promise((resolve, reject) => {
+
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+
+            const data = new Uint8Array(e.target.result);
+
+            const workbook = XLSX.read(data, {
+                type: "array"
+            });
+
+            const primeiraAba = workbook.Sheets[workbook.SheetNames[0]];
+
+            const json = XLSX.utils.sheet_to_json(primeiraAba);
+
+            resolve(json);
+
+        };
+
+        reader.onerror = reject;
+
+        reader.readAsArrayBuffer(file);
+
+    });
+}
+
+async function gerarDashboard() {
+
+    const arquivoProdutos =
+        document.getElementById("produtos").files[0];
+
+    const arquivoVendas =
+        document.getElementById("vendas").files[0];
+
+    if (!arquivoProdutos || !arquivoVendas) {
+
+        alert("Selecione as duas planilhas.");
+
+        return;
+
+    }
+
+    produtos = await lerArquivo(arquivoProdutos);
+
+    vendas = await lerArquivo(arquivoVendas);
+
+    document.getElementById("dashboard")
+        .classList.remove("d-none");
+
+    document.getElementById("totalProdutos")
+        .innerText = produtos.length;
+
+    document.getElementById("totalVendas")
+        .innerText = vendas.length;
+
+    calcularIndicadores();
+
+}
+function calcularIndicadores(){
+
+let faturamento = 0;
+
+vendas.forEach(item=>{
+
+    faturamento += Number(item["Valor Total"] || 0);
+
+});
+
+document.getElementById("faturamento")
+.innerText =
+
+faturamento.toLocaleString(
+
+'pt-BR',
+
+{
+
+style:'currency',
+
+currency:'BRL'
+
+});
 
 }
