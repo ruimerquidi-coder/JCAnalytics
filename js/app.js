@@ -65,7 +65,7 @@ mostrarListaCompras(compras);
     } catch (erro) {
 
         console.error("Erro:", erro);
-        alert("Erro ao ler as planilhas.");
+    alert("Erro ao ler as planilhas.");
 
     }
 
