@@ -62,6 +62,7 @@ document.getElementById("resumoFaturamento").innerText =
 document.getElementById("resumoCriticos").innerText =
     document.getElementById("criticos").innerText;
         atualizarResumoEstoque();
+        validarBaseProdutos();
         const motor = criarMotorCompra(produtos, vendas);
 
 console.log("Motor de Compra:", motor);
@@ -186,6 +187,61 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("barraSemEstoque").innerText =
         semEstoque;
+
+}
+function validarBaseProdutos() {
+
+    let ativos = 0;
+    let inativos = 0;
+    let estoqueZero = 0;
+    let estoqueNegativo = 0;
+    let abaixoMinimo = 0;
+    let categorias = new Set();
+
+    produtos.forEach(produto => {
+
+        const status = (produto["Status Venda"] || "").trim();
+
+        const estoque = Number(produto["Estoque"] || 0);
+
+        const minimo = Number(produto["Estoque Mín"] || 0);
+
+        const categoria = produto["Categoria"];
+
+        if (categoria)
+            categorias.add(categoria);
+
+        if (status === "Ativo")
+            ativos++;
+        else
+            inativos++;
+
+        if (estoque == 0)
+            estoqueZero++;
+
+        if (estoque < 0)
+            estoqueNegativo++;
+
+        if (estoque < minimo)
+            abaixoMinimo++;
+
+    });
+
+    console.log("========== VALIDAÇÃO ==========");
+
+    console.log("Produtos:", produtos.length);
+
+    console.log("Ativos:", ativos);
+
+    console.log("Inativos:", inativos);
+
+    console.log("Estoque Zero:", estoqueZero);
+
+    console.log("Estoque Negativo:", estoqueNegativo);
+
+    console.log("Abaixo do mínimo:", abaixoMinimo);
+
+    console.log("Categorias:", categorias.size);
 
 }
                          
