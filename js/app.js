@@ -55,6 +55,12 @@ async function gerarDashboard() {
         document.getElementById("totalVendas").innerText = vendas.length;
 
         calcularIndicadores();
+        document.getElementById("resumoProdutos").innerText = produtos.length;
+document.getElementById("resumoVendas").innerText = vendas.length;
+document.getElementById("resumoFaturamento").innerText =
+    document.getElementById("faturamento").innerText;
+document.getElementById("resumoCriticos").innerText =
+    document.getElementById("criticos").innerText;
         atualizarResumoEstoque();
         const motor = criarMotorCompra(produtos, vendas);
 
