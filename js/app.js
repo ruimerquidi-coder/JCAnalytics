@@ -104,6 +104,22 @@ function calcularIndicadores() {
             style: "currency",
             currency: "BRL"
         });
+    // Resumo Executivo
+
+document.getElementById("resumoFaturamento").innerText =
+    faturamento.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    });
+
+document.getElementById("resumoProdutos").innerText =
+    produtos.length;
+
+document.getElementById("resumoVendas").innerText =
+    vendas.length;
+
+document.getElementById("resumoCriticos").innerText =
+    calcularProdutosCriticos(produtos).length;
 
 }
 
