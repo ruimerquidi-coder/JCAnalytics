@@ -55,6 +55,9 @@ async function gerarDashboard() {
         document.getElementById("totalVendas").innerText = vendas.length;
 
         calcularIndicadores();
+        const motor = criarMotorCompra(produtos, vendas);
+
+console.log("Motor de Compra:", motor);
         const criticos = calcularProdutosCriticos(produtos);
 
 mostrarProdutosCriticos(criticos);
