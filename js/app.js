@@ -55,6 +55,9 @@ async function gerarDashboard() {
         document.getElementById("totalVendas").innerText = vendas.length;
 
         calcularIndicadores();
+        const criticos = calcularProdutosCriticos(produtos);
+
+mostrarProdutosCriticos(criticos);
 
     } catch (erro) {
 
