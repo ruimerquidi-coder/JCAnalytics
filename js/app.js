@@ -54,6 +54,7 @@ async function gerarDashboard() {
         produtos = await lerArquivo(arquivoProdutos);
 
         vendas = await lerArquivo(arquivoVendas);
+        console.log(vendas[0]);
 
         document
             .getElementById("dashboard")
