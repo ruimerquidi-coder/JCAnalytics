@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .getElementById("btnDashboard")
         .addEventListener("click", gerarDashboard);
 
-}
+});
                           function atualizarResumoEstoque(){
 
     let regular = 0;
