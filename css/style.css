@@ -1,25 +1,178 @@
+/* =====================================
+   JC Analytics v0.2
+   JC Tech Solutions
+===================================== */
+
 body{
-
-background:#f4f4f4;
-
+    background:#f4f6f9;
+    font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
 }
+
+/* NAVBAR */
+
+.navbar{
+    background:#1f2937 !important;
+    box-shadow:0 3px 10px rgba(0,0,0,.15);
+}
+
+.navbar-brand{
+    font-size:28px;
+    font-weight:bold;
+}
+
+/* CARDS */
 
 .card{
+    border:none;
+    border-radius:18px;
+    transition:.25s;
+    box-shadow:0 8px 18px rgba(0,0,0,.08);
+}
 
-border:none;
+.card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 14px 30px rgba(0,0,0,.12);
+}
 
-border-radius:12px;
+.card h6{
+    font-weight:600;
+    color:#666;
+}
+
+.card h2{
+    font-size:34px;
+    font-weight:bold;
+    color:#0d6efd;
+}
+
+/* BOTÃO */
+
+.btn-primary{
+
+    background:#0d6efd;
+
+    border:none;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    border-radius:12px;
+
+    padding:14px;
 
 }
 
-h2{
+.btn-primary:hover{
 
-font-weight:bold;
+    background:#0b5ed7;
 
 }
+
+/* TÍTULOS */
+
+h3{
+
+    font-weight:bold;
+
+}
+
+h4{
+
+    font-weight:bold;
+
+    color:#1f2937;
+
+}
+
+/* DASHBOARD */
+
+#dashboard{
+
+    animation:fade .5s;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(15px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* FATURAMENTO */
+
+#faturamento{
+
+    white-space:nowrap;
+
+}
+
+/* LISTAS */
+
+#listaCriticos div,
+
+#listaCompras div{
+
+    padding:12px;
+
+    border-bottom:1px solid #e8e8e8;
+
+}
+
+#listaCriticos div:hover,
+
+#listaCompras div:hover{
+
+    background:#f8f9fa;
+
+}
+
+/* SCROLL */
+
+#listaCriticos,
+
+#listaCompras{
+
+    max-height:420px;
+
+    overflow-y:auto;
+
+}
+
+/* CANVAS */
 
 canvas{
 
-margin-top:40px;
+    max-height:350px;
+
+}
+
+/* RODAPÉ */
+
+footer{
+
+    text-align:center;
+
+    color:#777;
+
+    padding:25px;
+
+    margin-top:40px;
+
+    font-size:14px;
 
 }
