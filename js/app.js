@@ -37,11 +37,8 @@ async function gerarDashboard() {
 
     try {
 
-        const arquivoProdutos =
-            document.getElementById("produtos").files[0];
-
-        const arquivoVendas =
-            document.getElementById("vendas").files[0];
+        const arquivoProdutos = document.getElementById("produtos").files[0];
+        const arquivoVendas = document.getElementById("vendas").files[0];
 
         if (!arquivoProdutos || !arquivoVendas) {
 
@@ -52,8 +49,9 @@ async function gerarDashboard() {
         }
 
         produtos = await lerArquivo(arquivoProdutos);
-
         vendas = await lerArquivo(arquivoVendas);
+
+        console.log(produtos[0]);
         console.log(vendas[0]);
 
         document
@@ -86,21 +84,33 @@ function calcularIndicadores() {
 
     let faturamento = 0;
 
-  vendas.forEach(item => {
+    vendas.forEach(item => {
 
-    faturamento += Number(item["Valor. Tot. Item"] || 0);
+        let valor = item["Valor. Tot. Item"];
+
+        if (valor === undefined || valor === null) {
+            valor = 0;
+        }
+
+        if (typeof valor === "string") {
+            valor = valor.replace(",", ".");
+        }
+
+        valor = parseFloat(valor);
+
+        if (!isNaN(valor)) {
+            faturamento += valor;
+        }
 
     });
 
-    document
-        .getElementById("faturamento")
-        .innerText = faturamento.toLocaleString(
-            "pt-BR",
-            {
-                style: "currency",
-                currency: "BRL"
-            }
-        );
+    console.log("Faturamento calculado:", faturamento);
+
+    document.getElementById("faturamento").innerText =
+        faturamento.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL"
+        });
 
 }
 
