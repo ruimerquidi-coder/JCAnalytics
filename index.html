@@ -313,13 +313,50 @@ Produtos Críticos
 
                 <div class="card p-4 h-100">
 
-                    <h4>📈 Visão Geral</h4>
+                    <h4>📊 Situação do Mercado</h4>
 
-                    <canvas id="grafico"></canvas>
+        <hr>
 
-                </div>
+        <h6>🟢 Produtos Regulares</h6>
 
+        <div class="progress mb-3" style="height:22px;">
+            <div id="barraRegular"
+                 class="progress-bar bg-success"
+                 style="width:0%">
+                 0
             </div>
+        </div>
+
+        <h6>🟡 Produtos Críticos</h6>
+
+        <div class="progress mb-3" style="height:22px;">
+            <div id="barraCriticos"
+                 class="progress-bar bg-warning text-dark"
+                 style="width:0%">
+                 0
+            </div>
+        </div>
+
+        <h6>🔴 Produtos Sem Estoque</h6>
+
+        <div class="progress mb-4" style="height:22px;">
+            <div id="barraSemEstoque"
+                 class="progress-bar bg-danger"
+                 style="width:0%">
+                 0
+            </div>
+        </div>
+
+        <hr>
+
+        <p class="text-muted">
+
+            ✔ Dados calculados automaticamente pelas planilhas importadas.
+
+        </p>
+
+    </div>
+
 
         </div>
 
