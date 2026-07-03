@@ -55,6 +55,7 @@ async function gerarDashboard() {
         document.getElementById("totalVendas").innerText = vendas.length;
 
         calcularIndicadores();
+        atualizarResumoEstoque();
         const motor = criarMotorCompra(produtos, vendas);
 
 console.log("Motor de Compra:", motor);
@@ -112,4 +113,57 @@ document.addEventListener("DOMContentLoaded", function () {
         .getElementById("btnDashboard")
         .addEventListener("click", gerarDashboard);
 
-});
+}
+                          function atualizarResumoEstoque(){
+
+    let regular = 0;
+    let critico = 0;
+    let semEstoque = 0;
+
+    produtos.forEach(produto=>{
+
+        const estoque = Number(produto["Estoque"] || 0);
+        const minimo = Number(produto["Estoque Mín"] || 0);
+
+        if(estoque == 0){
+
+            semEstoque++;
+
+        }
+
+        else if(estoque <= minimo){
+
+            critico++;
+
+        }
+
+        else{
+
+            regular++;
+
+        }
+
+    });
+
+    const total = produtos.length;
+
+    document.getElementById("barraRegular").style.width =
+        (regular/total*100)+"%";
+
+    document.getElementById("barraRegular").innerText =
+        regular;
+
+    document.getElementById("barraCriticos").style.width =
+        (critico/total*100)+"%";
+
+    document.getElementById("barraCriticos").innerText =
+        critico;
+
+    document.getElementById("barraSemEstoque").style.width =
+        (semEstoque/total*100)+"%";
+
+    document.getElementById("barraSemEstoque").innerText =
+        semEstoque;
+
+}
+                         );
