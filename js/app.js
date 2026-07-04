@@ -205,21 +205,14 @@ function validarBaseProdutos() {
 
     });
 
-    console.log("========== VALIDAÇÃO ==========");
+   console.log("========== AUDITORIA ==========");
 
-    console.log("Produtos:", produtos.length);
-
-    console.log("Ativos:", ativos);
-
-    console.log("Inativos:", inativos);
-
-    console.log("Estoque Zero:", estoqueZero);
-
-    console.log("Estoque Negativo:", estoqueNegativo);
-
-    console.log("Abaixo do mínimo:", abaixoMinimo);
-
-    console.log("Categorias:", categorias.size);
-
-}
-                         
+console.table({
+    "Produtos na planilha": produtos.length,
+    "Produtos Ativos": ativos,
+    "Produtos Inativos": inativos,
+    "Sem Estoque": estoqueZero,
+    "Estoque Negativo": estoqueNegativo,
+    "Abaixo do Mínimo": abaixoMinimo,
+    "Categorias": categorias.size
+});
