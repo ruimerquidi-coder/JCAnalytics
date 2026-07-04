@@ -104,9 +104,13 @@ function mostrarProdutosCriticos(lista) {
 
     const div = document.getElementById("listaCriticos");
 
-    document.getElementById("criticos").innerText = lista.length;
+   const resumo = calcularResumoEstoque(produtos);
 
-    document.getElementById("resumoCriticos").innerText = lista.length;
+   document.getElementById("criticos").innerText =
+       resumo.atencao;
+
+   document.getElementById("resumoCriticos").innerText =
+       resumo.atencao;
 
     if (lista.length === 0) {
 
