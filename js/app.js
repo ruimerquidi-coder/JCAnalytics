@@ -2,6 +2,10 @@ console.log("JC Analytics iniciado");
 
 let produtos = [];
 let vendas = [];
+const CATEGORIAS_IGNORADAS = [
+    "PADARIA GRIMPEIRO",
+    "SABORY"
+];
 
 async function lerArquivo(file) {
     return new Promise((resolve, reject) => {
