@@ -114,7 +114,7 @@ if (item.estoque < 0) {
             <br><br>
 
             Estoque:
-            <strong>${estoqueTexto} ${item.medida}</strong>
+            ${estoqueHtml}
 
             |
 
