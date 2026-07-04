@@ -199,13 +199,13 @@ function validarBaseProdutos() {
     estoqueZero++;
 
 }
-else if (estoque < minimo) {
+        else if(estoque < minimo) {
 
     abaixoMinimo++;
 
 }
 
-if (estoque < 0) {
+        if(estoque < 0) {
 
     estoqueNegativo++;
 
