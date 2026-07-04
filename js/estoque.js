@@ -114,7 +114,7 @@ function mostrarProdutosCriticos(lista) {
 
     if (lista.length === 0) {
 
-        div.innerHTML = "<p>Nenhum produto crítico encontrado.</p>";
+        div.innerHTML = "<p>Nenhum produto para revisão encontrado.</p>";
         return;
 
     }
