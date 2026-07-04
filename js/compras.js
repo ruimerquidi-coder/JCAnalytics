@@ -10,6 +10,11 @@ function gerarListaCompras(produtos) {
         if (!nome || nome.toString().startsWith("Total")) {
             return;
         }
+        const status = (produto["Status Venda"] || "").trim();
+
+        if (status !== "Ativo") {
+            return;
+}
 
         const estoque = Number(produto["Estoque"] || 0);
         const minimo = Number(produto["Estoque Mín"] || 0);
@@ -25,13 +30,7 @@ function gerarListaCompras(produtos) {
             } else {
                 comprar = Number(comprar.toFixed(2));
             }
-console.log({
-    nome: produto["Nome"],
-    estoque: estoque,
-    minimo: minimo,
-    medida: medida,
-    comprar: minimo - estoque
-});
+
             lista.push({
 
                 nome: nome,
