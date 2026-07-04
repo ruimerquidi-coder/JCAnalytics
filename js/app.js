@@ -216,3 +216,4 @@ console.table({
     "Abaixo do Mínimo": abaixoMinimo,
     "Categorias": categorias.size
 });
+}
