@@ -137,56 +137,34 @@ document.addEventListener("DOMContentLoaded", function () {
         .addEventListener("click", gerarDashboard);
 
 });
-                          function atualizarResumoEstoque(){
+                         function atualizarResumoEstoque() {
 
-    let regular = 0;
-    let critico = 0;
-    let semEstoque = 0;
-
-    produtos.forEach(produto=>{
-
-        const estoque = Number(produto["Estoque"] || 0);
-        const minimo = Number(produto["Estoque Mín"] || 0);
-
-        if(estoque == 0){
-
-            semEstoque++;
-
-        }
-
-        else if(estoque <= minimo){
-
-            critico++;
-
-        }
-
-        else{
-
-            regular++;
-
-        }
-
-    });
-
-    const total = produtos.length;
+    const resumo = calcularResumoEstoque(produtos);
 
     document.getElementById("barraRegular").style.width =
-        (regular/total*100)+"%";
+        (resumo.regular / resumo.totalAtivos * 100) + "%";
 
     document.getElementById("barraRegular").innerText =
-        regular;
+        resumo.regular;
 
     document.getElementById("barraCriticos").style.width =
-        (critico/total*100)+"%";
+        (resumo.abaixoMinimo / resumo.totalAtivos * 100) + "%";
 
     document.getElementById("barraCriticos").innerText =
-        critico;
+        resumo.abaixoMinimo;
 
     document.getElementById("barraSemEstoque").style.width =
-        (semEstoque/total*100)+"%";
+        (resumo.semEstoque / resumo.totalAtivos * 100) + "%";
 
     document.getElementById("barraSemEstoque").innerText =
-        semEstoque;
+        resumo.semEstoque;
+
+    // Cards superiores
+    document.getElementById("criticos").innerText =
+        resumo.atencao;
+
+    document.getElementById("resumoCriticos").innerText =
+        resumo.atencao;
 
 }
 function validarBaseProdutos() {
