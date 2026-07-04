@@ -42,6 +42,63 @@ function calcularProdutosCriticos(produtos) {
     return criticos;
 
 }
+function calcularResumoEstoque(produtos) {
+
+    let regular = 0;
+    let abaixoMinimo = 0;
+    let semEstoque = 0;
+    let totalAtivos = 0;
+
+    produtos.forEach(produto => {
+
+        const nome = produto["Nome"];
+
+        if (!nome || nome.toString().startsWith("Total")) {
+            return;
+        }
+
+        const status = (produto["Status Venda"] || "").trim();
+
+        if (status !== "Ativo") {
+            return;
+        }
+
+        totalAtivos++;
+
+        const estoque = Number(produto["Estoque"] || 0);
+        const minimo = Number(produto["Estoque Mín"] || 0);
+
+        if (estoque === 0) {
+
+            semEstoque++;
+
+        } else if (estoque < minimo) {
+
+            abaixoMinimo++;
+
+        } else {
+
+            regular++;
+
+        }
+
+    });
+
+    return {
+
+        totalAtivos,
+
+        regular,
+
+        abaixoMinimo,
+
+        semEstoque,
+
+        atencao: abaixoMinimo + semEstoque
+
+    };
+
+}
 
 function mostrarProdutosCriticos(lista) {
 
