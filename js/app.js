@@ -2,6 +2,7 @@ console.log("JC Analytics iniciado");
 
 let produtos = [];
 let vendas = [];
+
 const CATEGORIAS_IGNORADAS = [
     "PADARIA GRIMPEIRO",
     "SABORY"
@@ -49,6 +50,14 @@ async function gerarDashboard() {
 
         produtos = await lerArquivo(arquivoProdutos);
         vendas = await lerArquivo(arquivoVendas);
+
+        produtos = produtos.filter(produto => {
+
+            const categoria = (produto["Categoria"] || "").trim().toUpperCase();
+
+            return !CATEGORIAS_IGNORADAS.includes(categoria);
+
+});
 
         console.log("Primeiro produto:", produtos[0]);
         console.log("Primeira venda:", vendas[0]);
