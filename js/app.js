@@ -194,14 +194,22 @@ function validarBaseProdutos() {
         else
             inativos++;
 
-        if (estoque == 0)
-            estoqueZero++;
+        if (estoque === 0) {
 
-        if (estoque < 0)
-            estoqueNegativo++;
+    estoqueZero++;
 
-        if (estoque < minimo)
-            abaixoMinimo++;
+}
+else if (estoque < minimo) {
+
+    abaixoMinimo++;
+
+}
+
+if (estoque < 0) {
+
+    estoqueNegativo++;
+
+}
 
     });
 
