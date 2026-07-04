@@ -83,6 +83,25 @@ function mostrarListaCompras(lista) {
                 ? item.comprar
                 : item.comprar.toFixed(2).replace(".", ",");
 
+let estoqueHtml = "";
+
+if (item.estoque < 0) {
+
+    estoqueHtml = `
+        <span class="text-danger fw-bold">
+            ⚠ Estoque Negativo: ${estoqueTexto} ${item.medida}
+        </span>
+    `;
+
+} else {
+
+    estoqueHtml = `
+        Estoque:
+        <strong>${estoqueTexto} ${item.medida}</strong>
+    `;
+
+}
+
         html += `
         <div class="border rounded p-3 mb-2">
 
